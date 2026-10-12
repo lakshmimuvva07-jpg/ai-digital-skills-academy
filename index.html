@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Digital Skills Academy - Demo Project</title>
+<title>AI Digital Skills Academy - Homework Demonstration</title>
 
 <style>
 /* ============================================================
-   ROOT THEME & COLOR PALETTE (White, Light Purple, Blue)
+   COLOR SYSTEM & CSS VARIABLES
+   Palette: White, Light Purple, Deep Purple, Soft Blue & Electric Blue
    ============================================================ */
 :root {
   --primary-purple: #6d28d9;
-  --secondary-purple: #8b5cf6;
+  --secondary-purple: #7c3aed;
   --light-purple: #f5f3ff;
   --purple-subtle: #ede9fe;
   --purple-border: #ddd6fe;
@@ -26,15 +27,15 @@
   --accent-whatsapp: #25D366;
   --accent-whatsapp-hover: #1eb956;
 
-  --text-dark: #1e1b4b;
-  --text-muted: #4b5563;
+  --text-dark: #0f172a;
+  --text-muted: #475569;
   --text-light: #ffffff;
 
   --bg-page: #f8fafc;
   --card-bg: #ffffff;
-  --shadow-sm: 0 2px 8px rgba(109, 40, 217, 0.06);
-  --shadow-md: 0 6px 20px rgba(109, 40, 217, 0.08);
-  --shadow-lg: 0 12px 30px rgba(37, 99, 235, 0.12);
+  --shadow-sm: 0 2px 10px rgba(109, 40, 217, 0.05);
+  --shadow-md: 0 8px 24px rgba(109, 40, 217, 0.08);
+  --shadow-lg: 0 16px 36px rgba(37, 99, 235, 0.12);
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -51,23 +52,23 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Nirmala UI", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Nirmala UI", sans-serif;
   background-color: var(--bg-page);
   color: var(--text-dark);
   line-height: 1.6;
 }
 
 /* ============================================================
-   TOP NOTICE / HEADER
+   TOP DEMO NOTICE BANNER
    ============================================================ */
 .demo-top-bar {
-  background: linear-gradient(90deg, #4338ca, #6d28d9, #2563eb);
+  background: linear-gradient(90deg, #312e81, #6d28d9, #2563eb);
   color: #ffffff;
   padding: 8px 16px;
   text-align: center;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .demo-top-bar span {
@@ -79,18 +80,23 @@ body {
   text-transform: uppercase;
 }
 
+/* ============================================================
+   HEADER
+   ============================================================ */
 header {
-  background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2e1065 100%);
   color: white;
-  padding: 26px 20px 22px;
+  padding: 24px 20px;
   text-align: center;
   border-bottom: 3px solid var(--secondary-purple);
+  position: relative;
 }
 
 header h1 {
   font-size: 28px;
-  margin-bottom: 6px;
+  font-weight: 800;
   letter-spacing: 0.5px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,40 +106,54 @@ header h1 {
 
 header p {
   color: #c7d2fe;
-  font-size: 15px;
-  letter-spacing: 1.5px;
+  font-size: 14px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
   font-weight: 500;
 }
 
 /* ============================================================
-   NAVIGATION
+   STICKY RESPONSIVE NAVIGATION
    ============================================================ */
 nav {
   background: #ffffff;
-  padding: 12px 16px;
-  text-align: center;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid var(--purple-border);
 }
 
 .nav-container {
-  max-width: 1100px;
+  max-width: 1150px;
   margin: auto;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-weight: 800;
+  color: var(--primary-purple);
+  font-size: 17px;
+  text-decoration: none;
+  display: flex;
   align-items: center;
   gap: 8px;
 }
 
-nav a {
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
   color: var(--primary-purple);
   text-decoration: none;
-  padding: 8px 14px;
+  padding: 8px 13px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 14px;
@@ -143,30 +163,46 @@ nav a {
   gap: 6px;
 }
 
-nav a:hover {
+.nav-links a:hover {
   background: var(--purple-subtle);
   color: #4338ca;
   transform: translateY(-1px);
 }
 
-nav a.nav-highlight {
+.nav-links a.nav-cta {
   background: var(--light-blue);
   color: var(--primary-blue);
   border: 1px solid var(--blue-border);
 }
 
-nav a.nav-highlight:hover {
+.nav-links a.nav-cta:hover {
   background: var(--blue-subtle);
+}
+
+/* Mobile Hamburger Button */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--primary-purple);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.nav-toggle:hover {
+  background: var(--purple-subtle);
 }
 
 /* ============================================================
    HERO SECTION
    ============================================================ */
 .hero {
-  background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 40%, #581c87 80%, #6d28d9 100%);
   color: white;
   text-align: center;
-  padding: 60px 20px 65px;
+  padding: 65px 20px 75px;
   position: relative;
   overflow: hidden;
 }
@@ -178,35 +214,37 @@ nav a.nav-highlight:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  background: radial-gradient(circle at 15% 85%, rgba(255,255,255,0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
 .hero-badge {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(4px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
   color: #ffffff;
-  padding: 6px 16px;
+  padding: 6px 18px;
   border-radius: 30px;
   font-size: 13px;
   font-weight: 600;
-  margin-bottom: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .hero h1 {
-  font-size: 38px;
+  font-size: 40px;
   font-weight: 800;
   margin-bottom: 14px;
   line-height: 1.25;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .hero p {
   font-size: 18px;
-  max-width: 720px;
-  margin: 0 auto 26px;
+  max-width: 760px;
+  margin: 0 auto 28px;
   color: #e0e7ff;
 }
 
@@ -216,6 +254,29 @@ nav a.nav-highlight:hover {
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 10px;
+}
+
+/* Hero Quick Stats Strip */
+.hero-stats-strip {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.hero-stat-item {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 20px;
 }
 
 /* ============================================================
@@ -254,13 +315,12 @@ nav a.nav-highlight:hover {
 
 .whatsapp-btn {
   background: var(--accent-whatsapp);
-  color: white;
+  color: white !important;
   text-decoration: none;
 }
 
 .whatsapp-btn:hover {
   background: var(--accent-whatsapp-hover);
-  color: white;
 }
 
 .btn-small {
@@ -292,18 +352,18 @@ nav a.nav-highlight:hover {
    COMMON SECTION STYLING
    ============================================================ */
 section {
-  padding: 55px 20px;
-  max-width: 1100px;
+  padding: 60px 20px;
+  max-width: 1150px;
   margin: auto;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 
 .section-header h2 {
-  font-size: 30px;
+  font-size: 32px;
   color: var(--text-dark);
   margin-bottom: 8px;
   display: inline-block;
@@ -313,7 +373,7 @@ section {
 .section-header p {
   color: var(--text-muted);
   font-size: 16px;
-  max-width: 600px;
+  max-width: 650px;
   margin: auto;
 }
 
@@ -327,24 +387,25 @@ section {
   border-radius: 20px;
   margin-bottom: 8px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* ============================================================
-   COURSES CARDS (5 Specified Courses)
+   COURSES CARDS SECTION (ChatGPT, Prompt Writing, Canva, AI Video, Digital Marketing)
    ============================================================ */
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 24px;
 }
 
 .course-card {
   background: var(--card-bg);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 26px;
   border: 1px solid var(--purple-border);
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -362,14 +423,21 @@ section {
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
   border-color: var(--secondary-purple);
 }
 
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .course-icon {
-  width: 52px;
-  height: 52px;
+  width: 54px;
+  height: 54px;
   background: var(--purple-subtle);
   color: var(--primary-purple);
   border-radius: 12px;
@@ -377,11 +445,20 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 26px;
-  margin-bottom: 16px;
+}
+
+.course-level-chip {
+  font-size: 11.5px;
+  font-weight: 700;
+  background: var(--light-blue);
+  color: var(--primary-blue);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--blue-border);
 }
 
 .course-card h3 {
-  font-size: 20px;
+  font-size: 21px;
   color: var(--text-dark);
   margin-bottom: 10px;
 }
@@ -389,23 +466,23 @@ section {
 .course-card p {
   color: var(--text-muted);
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: 16px;
   flex-grow: 1;
 }
 
 .course-card .features {
   list-style: none;
-  margin-bottom: 18px;
-  font-size: 13px;
-  color: #374151;
+  margin-bottom: 20px;
+  font-size: 13.5px;
+  color: #334155;
 }
 
 .course-card .features li {
   margin-bottom: 6px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .course-card .features li::before {
@@ -418,47 +495,48 @@ section {
   margin-top: auto;
 }
 
-.course-action a {
-  display: block;
-  text-align: center;
-  padding: 10px;
+.course-action button {
+  width: 100%;
+  padding: 11px;
   background: var(--light-purple);
   color: var(--primary-purple);
-  text-decoration: none;
   font-weight: 700;
   font-size: 14px;
   border-radius: 8px;
   transition: all 0.2s ease;
   border: 1px solid var(--purple-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
-.course-action a:hover {
+.course-action button:hover {
   background: var(--primary-purple);
   color: white;
 }
 
 /* ============================================================
-   ABOUT TRAINER SECTION
+   ABOUT TRAINER SECTION (Editable via Admin modal or script)
    ============================================================ */
 .trainer-section {
-  background: linear-gradient(135deg, #ffffff 0%, var(--light-purple) 50%, var(--light-blue) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, var(--light-purple) 60%, var(--light-blue) 100%);
   border-radius: var(--radius-lg);
   border: 1px solid var(--purple-border);
   box-shadow: var(--shadow-md);
-  margin-top: 30px;
-  margin-bottom: 30px;
   padding: 40px;
 }
 
 .trainer-card {
   display: flex;
-  gap: 35px;
+  gap: 36px;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .trainer-avatar-box {
-  flex: 0 0 160px;
+  flex: 0 0 170px;
   text-align: center;
 }
 
@@ -473,7 +551,7 @@ section {
   justify-content: center;
   font-size: 64px;
   margin: 0 auto 12px;
-  box-shadow: 0 8px 24px rgba(109, 40, 217, 0.25);
+  box-shadow: 0 10px 25px rgba(109, 40, 217, 0.25);
   border: 4px solid #ffffff;
 }
 
@@ -482,7 +560,7 @@ section {
   color: var(--primary-purple);
   font-weight: 700;
   font-size: 12px;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
   border: 1px solid var(--purple-border);
   display: inline-block;
@@ -490,13 +568,13 @@ section {
 
 .trainer-content {
   flex: 1;
-  min-width: 280px;
+  min-width: 290px;
 }
 
 .trainer-content h3 {
-  font-size: 28px;
+  font-size: 30px;
   color: #1e1b4b;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .trainer-subtitle {
@@ -507,17 +585,17 @@ section {
 }
 
 .trainer-bio {
-  color: #374151;
+  color: #334155;
   font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 18px;
+  line-height: 1.65;
+  margin-bottom: 20px;
 }
 
 .trainer-stats {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .trainer-stat-pill {
@@ -536,37 +614,37 @@ section {
 .trainer-contact-row {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 /* ============================================================
-   LEARNING GUIDE SECTION
+   LEARNING GUIDE SECTION (5 Steps + Homework workflow)
    ============================================================ */
 .guide-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .guide-step-card {
   background: white;
-  padding: 22px;
+  padding: 24px;
   border-radius: var(--radius-md);
   border: 1px solid var(--blue-border);
   box-shadow: var(--shadow-sm);
-  position: relative;
-  transition: transform 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .guide-step-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  border-color: var(--primary-blue);
 }
 
 .guide-step-num {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   background: var(--blue-subtle);
   color: var(--primary-blue);
   font-weight: 800;
@@ -574,32 +652,32 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 12px;
 }
 
 .guide-step-card h4 {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text-dark);
   margin-bottom: 6px;
 }
 
 .guide-step-card p {
   color: var(--text-muted);
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
 /* ============================================================
-   DEMO REGISTRATION FORM
+   DEMO REGISTRATION FORM WITH VALIDATION
    ============================================================ */
 .form-card {
   background: white;
-  padding: 34px 28px;
+  padding: 36px 30px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--purple-border);
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -611,6 +689,9 @@ section {
   margin-bottom: 24px;
   font-size: 13.5px;
   color: #1e3a8a;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .form-group {
@@ -648,11 +729,18 @@ section {
   box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.15);
 }
 
+.field-error-text {
+  color: #dc2626;
+  font-size: 12.5px;
+  margin-top: 4px;
+  display: none;
+}
+
 .form-buttons-row {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 22px;
+  margin-top: 24px;
 }
 
 .form-buttons-row button {
@@ -664,18 +752,18 @@ section {
   background: #dcfce7;
   border: 1.5px solid #86efac;
   color: #14532d;
-  padding: 14px 18px;
-  border-radius: 8px;
+  padding: 16px 20px;
+  border-radius: 10px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 15.5px;
   text-align: center;
-  margin-top: 18px;
+  margin-top: 20px;
   display: none;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.35s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
+  from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -687,7 +775,7 @@ section {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--purple-border);
-  padding: 30px;
+  padding: 32px;
 }
 
 .admin-header-row {
@@ -702,7 +790,7 @@ section {
 }
 
 .admin-title-area h3 {
-  font-size: 22px;
+  font-size: 23px;
   color: var(--text-dark);
   display: flex;
   align-items: center;
@@ -742,7 +830,7 @@ section {
 }
 
 .stat-box .num {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--primary-purple);
   line-height: 1.1;
@@ -759,7 +847,53 @@ section {
   color: var(--text-muted);
 }
 
-/* Admin Controls Toolbar */
+/* Course Statistics Bars */
+.stats-bars-container {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 25px;
+}
+
+.stats-bars-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.course-stat-bar-item {
+  margin-bottom: 10px;
+}
+
+.course-stat-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #334155;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary-blue), var(--secondary-purple));
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* Admin Toolbar: Search & Action Buttons */
 .admin-toolbar {
   display: flex;
   justify-content: space-between;
@@ -820,7 +954,7 @@ table.admin-table {
   border-collapse: collapse;
   text-align: left;
   font-size: 13.5px;
-  min-width: 600px;
+  min-width: 650px;
 }
 
 table.admin-table th {
@@ -846,7 +980,7 @@ table.admin-table tr:hover td {
   display: inline-block;
   background: var(--purple-subtle);
   color: var(--primary-purple);
-  padding: 3px 8px;
+  padding: 3px 9px;
   border-radius: 6px;
   font-size: 12px;
   font-weight: 600;
@@ -860,14 +994,89 @@ table.admin-table tr:hover td {
 }
 
 /* ============================================================
-   FOOTER (Required format + Trainer details + WhatsApp)
+   EDIT TRAINER & CONTACT MODAL
+   ============================================================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: var(--radius-md);
+  max-width: 520px;
+  width: 100%;
+  padding: 26px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--purple-border);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.modal-header h4 {
+  font-size: 19px;
+  color: var(--text-dark);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #64748b;
+}
+
+/* ============================================================
+   FLOATING WHATSAPP BUTTON (Bottom Right)
+   ============================================================ */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--accent-whatsapp);
+  color: white !important;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.08) translateY(-3px);
+  background: var(--accent-whatsapp-hover);
+}
+
+/* ============================================================
+   FOOTER
    ============================================================ */
 footer {
-  background: #171344;
+  background: #0f172a;
   color: white;
-  padding: 40px 20px 30px;
+  padding: 45px 20px 30px;
   border-top: 4px solid var(--secondary-purple);
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .footer-container {
@@ -910,23 +1119,51 @@ footer {
   color: #94a3b8;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 18px;
-  margin-top: 15px;
+  margin-top: 18px;
 }
 
 /* ============================================================
-   RESPONSIVE DESIGN (Mobile & Tablet)
+   RESPONSIVE DESIGN (Tablets & Mobile Phones)
    ============================================================ */
-@media (max-width: 768px) {
+@media (max-width: 868px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    padding: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--purple-border);
+    gap: 10px;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
   header h1 {
     font-size: 22px;
   }
 
   .hero {
-    padding: 45px 16px;
+    padding: 45px 16px 55px;
   }
 
   .hero h1 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .hero p {
@@ -936,7 +1173,7 @@ footer {
   .trainer-card {
     flex-direction: column;
     text-align: center;
-    gap: 20px;
+    gap: 22px;
   }
 
   .trainer-stats, .trainer-contact-row {
@@ -970,7 +1207,7 @@ footer {
 
 <body>
 
-<!-- DEMO PROJECT TOP BANNER -->
+<!-- DEMO TOP BAR NOTICE -->
 <div class="demo-top-bar">
   <span>DEMO PROJECT</span> HTML, CSS & JavaScript Homework Demonstration • AI Digital Skills Academy
 </div>
@@ -981,15 +1218,25 @@ footer {
   <p>Learn • Practice • Create • Grow</p>
 </header>
 
-<!-- NAVIGATION BAR -->
+<!-- STICKY RESPONSIVE NAVIGATION -->
 <nav>
   <div class="nav-container">
-    <a href="#home">🏠 Home</a>
-    <a href="#courses">📚 Courses</a>
-    <a href="#trainer">👨‍🏫 About Trainer</a>
-    <a href="#guide">📖 Learning Guide</a>
-    <a href="#register" class="nav-highlight">📝 Demo Registration</a>
-    <a href="#admin" class="nav-highlight">🔐 Demo Admin</a>
+    <a href="#home" class="nav-brand">
+      <span>🚀</span> AI Academy
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">🏠 Home</a></li>
+      <li><a href="#courses">📚 Courses</a></li>
+      <li><a href="#trainer">👨‍🏫 About Trainer</a></li>
+      <li><a href="#guide">📖 Learning Guide</a></li>
+      <li><a href="#register" class="nav-cta">📝 Demo Registration</a></li>
+      <li><a href="#admin" class="nav-cta">🔐 Demo Admin</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -997,13 +1244,13 @@ footer {
 <div class="hero" id="home">
   <div class="hero-badge">✨ Student Practical Skills Training</div>
   <h1>Welcome to AI & Digital Marketing</h1>
-  <p>AI Tools, Canva Design, Digital Marketing & Video Creation నేర్చుకోండి.</p>
+  <p>AI Tools, ChatGPT, Canva Design, Digital Marketing & Video Creation నేర్చుకోండి.</p>
   
   <div class="hero-buttons">
     <a href="#register" class="btn btn-primary">
       ✍️ Demo Registration
     </a>
-    <a class="btn whatsapp-btn"
+    <a class="btn whatsapp-btn dynamic-whatsapp-link"
        href="https://wa.me/919398683617"
        target="_blank"
        rel="noopener noreferrer">
@@ -1013,95 +1260,127 @@ footer {
       📊 View Demo Admin
     </a>
   </div>
+
+  <div class="hero-stats-strip">
+    <div class="hero-stat-item">⭐ 5 Essential Modules</div>
+    <div class="hero-stat-item">💡 100% Practical Practice</div>
+    <div class="hero-stat-item">🗣️ Telugu & English Mentorship</div>
+    <div class="hero-stat-item">📁 Google Drive Homework Reviews</div>
+  </div>
 </div>
 
-<!-- 1. COURSES SECTION (5 Specified Courses) -->
+<!-- 1. COURSES SECTION (ChatGPT, Prompt Writing, Canva, AI Video, Digital Marketing) -->
 <section id="courses">
   <div class="section-header">
     <span class="badge-tag">Curriculum</span>
-    <h2>📚 Course Details</h2>
-    <p>Essential hands-on digital skills designed for students, freelancers and beginners.</p>
+    <h2>📚 Essential Digital Skills Courses</h2>
+    <p>Hands-on digital skills modules designed for students, freelancers and beginners.</p>
   </div>
 
   <div class="courses-grid">
-    <!-- Course 1 -->
+    <!-- Course 1: ChatGPT and AI Tools -->
     <div class="course-card">
-      <div class="course-icon">🤖</div>
+      <div class="card-top-row">
+        <div class="course-icon">🤖</div>
+        <span class="course-level-chip">Beginner Friendly</span>
+      </div>
       <h3>AI Tools and ChatGPT</h3>
       <p>AI టూల్స్ ఉపయోగించడం, ChatGPT ప్రాంప్ట్లు రాయడం మరియు రోజువారీ పనులను వేగవంతం చేయడం నేర్చుకోండి.</p>
       <ul class="features">
-        <li>ChatGPT & Claude Fundamentals</li>
-        <li>AI for Everyday Productivity</li>
-        <li>Content & Problem Solving</li>
+        <li>ChatGPT-4o & Modern AI Tools</li>
+        <li>Academic & Daily Productivity</li>
+        <li>Content Summaries & Research</li>
       </ul>
       <div class="course-action">
-        <a href="#register" onclick="selectCourseOption('AI Tools and ChatGPT')">Register for Demo →</a>
+        <button type="button" onclick="selectAndScrollToCourse('AI Tools and ChatGPT')">
+          Select & Register (Demo) →
+        </button>
       </div>
     </div>
 
-    <!-- Course 2 -->
+    <!-- Course 2: Prompt Writing -->
     <div class="course-card">
-      <div class="course-icon">✍️</div>
+      <div class="card-top-row">
+        <div class="course-icon">✍️</div>
+        <span class="course-level-chip">Core Skill</span>
+      </div>
       <h3>Prompt Writing</h3>
-      <p>ఖచ్చితమైన, నాణ్యమైన అవుట్‌పుట్ పొందడానికి ప్రొఫెషనల్ ప్రాంప్ట్ ఇంజనీరింగ్ పద్ధతులు నేర్చుకోండి.</p>
+      <p>ఖచ్చితమైన, నాణ్యమైన ఫలితాలు పొందడానికి ప్రొఫెషనల్ ప్రాంప్ట్ ఇంజనీరింగ్ పద్ధతులు నేర్చుకోండి.</p>
       <ul class="features">
         <li>Structured Prompt Frameworks</li>
-        <li>Role-based & Multi-turn Prompts</li>
+        <li>Role-based & Multi-turn Prompting</li>
         <li>Creative Writing & Idea Generation</li>
       </ul>
       <div class="course-action">
-        <a href="#register" onclick="selectCourseOption('Prompt Writing')">Register for Demo →</a>
+        <button type="button" onclick="selectAndScrollToCourse('Prompt Writing')">
+          Select & Register (Demo) →
+        </button>
       </div>
     </div>
 
-    <!-- Course 3 -->
+    <!-- Course 3: Canva Design -->
     <div class="course-card">
-      <div class="course-icon">🎨</div>
+      <div class="card-top-row">
+        <div class="course-icon">🎨</div>
+        <span class="course-level-chip">Creative Design</span>
+      </div>
       <h3>Canva Design</h3>
       <p>సోషల్ మీడియా పోస్టర్లు, యూట్యూబ్ థంబ్‌నెయిల్స్, ఫ్లయర్లు మరియు ప్రొఫెషనల్ గ్రాఫిక్స్ తయారు చేయండి.</p>
       <ul class="features">
         <li>Social Media Posters & Banners</li>
-        <li>Color Theory & Typography</li>
-        <li>Canva AI Magic Tools</li>
+        <li>Color Harmony & Typography</li>
+        <li>Canva Magic Studio AI Tools</li>
       </ul>
       <div class="course-action">
-        <a href="#register" onclick="selectCourseOption('Canva Design')">Register for Demo →</a>
+        <button type="button" onclick="selectAndScrollToCourse('Canva Design')">
+          Select & Register (Demo) →
+        </button>
       </div>
     </div>
 
-    <!-- Course 4 -->
+    <!-- Course 4: Digital Marketing -->
     <div class="course-card">
-      <div class="course-icon">📱</div>
+      <div class="card-top-row">
+        <div class="course-icon">📱</div>
+        <span class="course-level-chip">Growth & Reach</span>
+      </div>
       <h3>Digital Marketing</h3>
       <p>సోషల్ మీడియా ప్రమోషన్, ఆన్‌లైన్ మార్కెటింగ్ వ్యూహాలు మరియు కంటెంట్ ఐడియాలు తెలుసుకోండి.</p>
       <ul class="features">
-        <li>Instagram & YouTube Strategy</li>
+        <li>Instagram & YouTube Promotion</li>
         <li>Audience Growth & Lead Gen</li>
-        <li>Brand Building Basics</li>
+        <li>Personal Brand Building Basics</li>
       </ul>
       <div class="course-action">
-        <a href="#register" onclick="selectCourseOption('Digital Marketing')">Register for Demo →</a>
+        <button type="button" onclick="selectAndScrollToCourse('Digital Marketing')">
+          Select & Register (Demo) →
+        </button>
       </div>
     </div>
 
-    <!-- Course 5 -->
+    <!-- Course 5: AI Video Creation -->
     <div class="course-card">
-      <div class="course-icon">🎬</div>
+      <div class="card-top-row">
+        <div class="course-icon">🎬</div>
+        <span class="course-level-chip">High Demand</span>
+      </div>
       <h3>AI Video Creation</h3>
       <p>AI వీడియోలు, అవతార్లు, వాయిస్ ఓవర్లు మరియు షార్ట్స్/రీల్స్ సులభంగా తయారు చేయడం ప్రాక్టీస్ చేయండి.</p>
       <ul class="features">
         <li>AI Script & Voice Generation</li>
-        <li>Talking Avatars & Video Tools</li>
-        <li>Reels & Shorts Production</li>
+        <li>Talking Avatars & Video Editing</li>
+        <li>Viral Reels & Shorts Creation</li>
       </ul>
       <div class="course-action">
-        <a href="#register" onclick="selectCourseOption('AI Video Creation')">Register for Demo →</a>
+        <button type="button" onclick="selectAndScrollToCourse('AI Video Creation')">
+          Select & Register (Demo) →
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 2. ABOUT TRAINER SECTION -->
+<!-- 2. ABOUT TRAINER SECTION (Editable Details) -->
 <section id="trainer">
   <div class="trainer-section">
     <div class="trainer-card">
@@ -1111,9 +1390,9 @@ footer {
       </div>
 
       <div class="trainer-content">
-        <h3>Paila Ravi Sankar</h3>
-        <div class="trainer-subtitle">Trainer & Digital Skills Mentor</div>
-        <p class="trainer-bio">
+        <h3 id="displayTrainerName">Paila Ravi Sankar</h3>
+        <div class="trainer-subtitle" id="displayTrainerTitle">Trainer & Digital Skills Mentor</div>
+        <p class="trainer-bio" id="displayTrainerBio">
           నమస్కారం! I am <strong>Paila Ravi Sankar</strong>, dedicated to guiding beginners, students and creators in mastering modern AI technologies, Canva design, and digital marketing strategies. My classes focus on 100% practical practice, beginner-friendly explanations in Telugu & English, and empowering you with real-world digital productivity skills.
         </p>
 
@@ -1124,12 +1403,16 @@ footer {
         </div>
 
         <div class="trainer-contact-row">
-          <a class="btn whatsapp-btn btn-small"
+          <a class="btn whatsapp-btn btn-small dynamic-whatsapp-link"
+             id="trainerWhatsappBtn"
              href="https://wa.me/919398683617"
              target="_blank"
              rel="noopener noreferrer">
-             💬 WhatsApp Trainer: +91 93986 83617
+             💬 WhatsApp: <span id="displayTrainerPhone">+91 93986 83617</span>
           </a>
+          <button type="button" class="btn btn-outline btn-small" id="openEditTrainerBtn">
+            ✏️ Edit Trainer Details (Demo)
+          </button>
         </div>
       </div>
     </div>
@@ -1177,52 +1460,55 @@ footer {
   </div>
 </section>
 
-<!-- 4. DEMO REGISTRATION FORM SECTION -->
+<!-- 4. DEMO REGISTRATION FORM SECTION (With Validation & localStorage) -->
 <section id="register">
   <div class="section-header">
     <span class="badge-tag">Demo Mode</span>
     <h2>📝 Student Registration (DEMO)</h2>
-    <p>Fill out the form below to test the registration feature. Data is saved to your browser's localStorage.</p>
+    <p>Fill out the form below to test the registration feature. All records are saved in your browser's localStorage.</p>
   </div>
 
   <div class="form-card">
     <div class="demo-disclaimer">
-      ℹ️ <strong>DEMO Form:</strong> This is a homework demonstration form. You do not need to provide real personal data; feel free to use test names.
+      <span>ℹ️</span>
+      <div>
+        <strong>DEMO Notice:</strong> This is a homework demonstration form. Do not submit sensitive personal details. Mock or test data is welcome.
+      </div>
     </div>
 
-    <form id="registrationForm">
+    <form id="registrationForm" novalidate>
       <div class="form-group">
         <label for="studentName">Student Name <span class="req">*</span></label>
-        <input id="studentName" type="text"
-               placeholder="మీ పేరు / e.g., Rajesh Kumar" required>
+        <input id="studentName" type="text" placeholder="మీ పేరు / e.g., Rajesh Kumar">
+        <div class="field-error-text" id="errName">Please enter a valid student name (at least 2 letters).</div>
       </div>
 
       <div class="form-group">
         <label for="mobile">Mobile Number <span class="req">*</span></label>
-        <input id="mobile" type="tel"
-               pattern="[0-9]{10}" maxlength="10"
-               placeholder="10 అంకెల నంబర్ / e.g., 9876543210" required>
+        <input id="mobile" type="tel" maxlength="10" placeholder="10 అంకెల నంబర్ / e.g., 9876543210">
+        <div class="field-error-text" id="errMobile">Please enter a valid 10-digit mobile number.</div>
       </div>
 
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input id="email" type="email"
-               placeholder="మీ ఇమెయిల్ / e.g., student@demo.com">
+        <input id="email" type="email" placeholder="మీ ఇమెయిల్ / e.g., student@demo.com">
+        <div class="field-error-text" id="errEmail">Please enter a valid email address (or leave blank).</div>
       </div>
 
       <div class="form-group">
         <label for="course">Interested Course <span class="req">*</span></label>
-        <select id="course" required>
+        <select id="course">
           <option value="AI Tools and ChatGPT">AI Tools and ChatGPT</option>
           <option value="Prompt Writing">Prompt Writing</option>
           <option value="Canva Design">Canva Design</option>
           <option value="Digital Marketing">Digital Marketing</option>
           <option value="AI Video Creation">AI Video Creation</option>
         </select>
+        <div class="field-error-text" id="errCourse">Please select a course.</div>
       </div>
 
       <div class="form-buttons-row">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" id="submitRegBtn">
           Submit Registration
         </button>
         <button type="button" class="btn btn-outline" id="autoFillBtn">
@@ -1242,7 +1528,7 @@ footer {
   <div class="section-header">
     <span class="badge-tag">Admin Panel</span>
     <h2>🔐 Admin Dashboard (DEMO)</h2>
-    <p>Real-time view of student registrations saved in localStorage with search and data management.</p>
+    <p>Live management of student registrations stored in localStorage with real-time search, statistics, and data controls.</p>
   </div>
 
   <div class="admin-card">
@@ -1253,7 +1539,7 @@ footer {
       </div>
       <div>
         <span style="font-size: 13px; color: var(--text-muted);">
-          💾 Storage: <strong>localStorage</strong> (persists on refresh)
+          💾 Storage: <strong>localStorage</strong> (persists on browser refresh)
         </span>
       </div>
     </div>
@@ -1262,11 +1548,11 @@ footer {
     <div class="admin-stats-grid">
       <div class="stat-box">
         <div class="num" id="totalCount">0</div>
-        <div class="label">Total Students</div>
+        <div class="label">Total Registrations</div>
       </div>
       <div class="stat-box stat-blue">
         <div class="num" id="courseTypesCount">5</div>
-        <div class="label">Active Courses</div>
+        <div class="label">Available Courses</div>
       </div>
       <div class="stat-box">
         <div class="num" id="todayCount">0</div>
@@ -1274,26 +1560,32 @@ footer {
       </div>
     </div>
 
-    <!-- Course Breakdown Badges -->
-    <div style="margin-bottom: 20px; font-size: 13px;">
-      <strong style="color: var(--text-dark);">Course Distribution:</strong>
-      <div id="courseBreakdownBadges" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
-        <!-- Filled by JS -->
+    <!-- Course Statistics Progress Bars -->
+    <div class="stats-bars-container">
+      <div class="stats-bars-title">
+        <span>📈 Course Enrollment Statistics</span>
+        <span style="color: var(--primary-purple); font-weight: bold;" id="statsTopCourse">Top: Loading...</span>
+      </div>
+      <div id="courseBarsList">
+        <!-- Rendered dynamically by JavaScript -->
       </div>
     </div>
 
-    <!-- Admin Toolbar: Search & Action Buttons -->
+    <!-- Admin Toolbar: Search & Action Controls -->
     <div class="admin-toolbar">
       <div class="search-box-wrapper">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Search by student name, mobile, or course...">
+        <input type="text" id="searchInput" placeholder="Search by student name, mobile, email, or course...">
       </div>
 
       <div class="admin-actions-group">
-        <button type="button" class="btn btn-outline btn-small" id="loadSampleDataBtn" title="Restore default sample records">
+        <button type="button" class="btn btn-outline btn-small" id="exportCsvBtn" title="Download records as CSV">
+          📥 Export CSV
+        </button>
+        <button type="button" class="btn btn-outline btn-small" id="loadSampleDataBtn" title="Restore sample demo data">
           🔄 Restore Sample Data
         </button>
-        <button type="button" class="btn btn-danger btn-small" id="clearDataBtn" title="Clear all records from localStorage">
+        <button type="button" class="btn btn-danger btn-small" id="clearDataBtn" title="Clear all registrations from localStorage">
           🗑️ Clear Demo Data
         </button>
       </div>
@@ -1310,7 +1602,7 @@ footer {
             <th>Email</th>
             <th>Selected Course</th>
             <th>Registered Date</th>
-            <th style="text-align: center; width: 80px;">Action</th>
+            <th style="text-align: center; width: 90px;">Action</th>
           </tr>
         </thead>
         <tbody id="studentTableBody">
@@ -1325,42 +1617,100 @@ footer {
   </div>
 </section>
 
+<!-- EDIT TRAINER DETAILS MODAL (Demo Settings) -->
+<div class="modal-overlay" id="editTrainerModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4>✏️ Edit Trainer & Contact Details</h4>
+      <button type="button" class="modal-close" id="closeModalBtn">&times;</button>
+    </div>
+    <form id="trainerEditForm">
+      <div class="form-group">
+        <label for="editName">Trainer Name</label>
+        <input type="text" id="editName" required>
+      </div>
+      <div class="form-group">
+        <label for="editTitle">Trainer Title</label>
+        <input type="text" id="editTitle" required>
+      </div>
+      <div class="form-group">
+        <label for="editPhone">Display Phone Number</label>
+        <input type="text" id="editPhone" required>
+      </div>
+      <div class="form-group">
+        <label for="editWhatsapp">WhatsApp Number (with country code, no +)</label>
+        <input type="text" id="editWhatsapp" placeholder="919398683617" required>
+      </div>
+      <div class="form-group">
+        <label for="editBio">Trainer Bio</label>
+        <textarea id="editBio" rows="3" style="width: 100%; padding: 10px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 13.5px;"></textarea>
+      </div>
+      <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 15px;">
+        <button type="button" class="btn btn-outline btn-small" id="cancelEditModalBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-small">Save Details</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- FLOATING WHATSAPP BUTTON (Bottom-Right Corner) -->
+<a class="floating-whatsapp dynamic-whatsapp-link"
+   href="https://wa.me/919398683617"
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Chat on WhatsApp"
+   aria-label="WhatsApp Chat">
+  💬
+</a>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-container">
     <h3>AI Digital Skills Academy</h3>
-    <p class="footer-trainer">Trainer: Paila Ravi Sankar</p>
+    <p class="footer-trainer">Trainer: <span id="footerTrainerName">Paila Ravi Sankar</span></p>
     <p class="footer-contact">
-      Contact: <a href="tel:+919398683617">+91 93986 83617</a>
+      Contact: <a href="tel:+919398683617" id="footerPhoneLink"><span id="footerTrainerPhone">+91 93986 83617</span></a>
     </p>
 
     <div class="footer-whatsapp">
-      <a class="btn whatsapp-btn btn-small"
+      <a class="btn whatsapp-btn btn-small dynamic-whatsapp-link"
+         id="footerWhatsappBtn"
          href="https://wa.me/919398683617"
          target="_blank"
          rel="noopener noreferrer">
-         💬 WhatsApp: +91 93986 83617
+         💬 WhatsApp: <span id="footerWhatsappText">+91 93986 83617</span>
       </a>
     </div>
 
     <div class="footer-copy">
       <p>HTML, CSS & JavaScript Homework Demonstration Website • All rights reserved © 2026</p>
+      <p style="margin-top: 6px; font-size: 11.5px; color: #64748b;">Compatible with GitHub Pages Static Hosting</p>
     </div>
   </div>
 </footer>
 
 <!-- ============================================================
      JAVASCRIPT LOGIC
+     - Editable Trainer & WhatsApp Configuration
      - LocalStorage Persistence
-     - Default Sample Students
-     - Real-Time Search
-     - Clear & Restore Demo Data
+     - Validation Logic
+     - Live Search, Course Statistics & CSV Export
      ============================================================ -->
 <script>
-// LocalStorage key definition
-const STORAGE_KEY = "ai_academy_demo_students";
+// LocalStorage storage keys
+const STORAGE_KEY_STUDENTS = "ai_academy_demo_students";
+const STORAGE_KEY_CONFIG = "ai_academy_site_config";
 
-// Pre-defined sample student records for homework presentation
+// Default Site & Trainer Configuration (Requirement 5 & 10)
+const DEFAULT_CONFIG = {
+  trainerName: "Paila Ravi Sankar",
+  trainerTitle: "Trainer & Digital Skills Mentor",
+  trainerPhone: "+91 93986 83617",
+  whatsappNumber: "919398683617",
+  trainerBio: "నమస్కారం! I am Paila Ravi Sankar, dedicated to guiding beginners, students and creators in mastering modern AI technologies, Canva design, and digital marketing strategies. My classes focus on 100% practical practice, beginner-friendly explanations in Telugu & English, and empowering you with real-world digital productivity skills."
+};
+
+// Default Sample Student Registrations for Homework Presentation
 const DEFAULT_SAMPLE_STUDENTS = [
   {
     id: 1,
@@ -1404,12 +1754,70 @@ const DEFAULT_SAMPLE_STUDENTS = [
   }
 ];
 
-// Helper: Read students from localStorage
+// Helper: Read Config from localStorage
+function getSiteConfig() {
+  const saved = localStorage.getItem(STORAGE_KEY_CONFIG);
+  if (!saved) {
+    localStorage.setItem(STORAGE_KEY_CONFIG, JSON.stringify(DEFAULT_CONFIG));
+    return { ...DEFAULT_CONFIG };
+  }
+  try {
+    return JSON.parse(saved);
+  } catch (e) {
+    return { ...DEFAULT_CONFIG };
+  }
+}
+
+// Helper: Save Config to localStorage and update DOM
+function saveSiteConfig(newConfig) {
+  localStorage.setItem(STORAGE_KEY_CONFIG, JSON.stringify(newConfig));
+  applySiteConfig();
+}
+
+// Apply site config dynamically to all trainer labels and WhatsApp links
+function applySiteConfig() {
+  const config = getSiteConfig();
+
+  // Update Trainer Section
+  const displayTrainerName = document.getElementById("displayTrainerName");
+  if (displayTrainerName) displayTrainerName.textContent = config.trainerName;
+
+  const displayTrainerTitle = document.getElementById("displayTrainerTitle");
+  if (displayTrainerTitle) displayTrainerTitle.textContent = config.trainerTitle;
+
+  const displayTrainerBio = document.getElementById("displayTrainerBio");
+  if (displayTrainerBio) displayTrainerBio.innerHTML = escapeHtml(config.trainerBio);
+
+  const displayTrainerPhone = document.getElementById("displayTrainerPhone");
+  if (displayTrainerPhone) displayTrainerPhone.textContent = config.trainerPhone;
+
+  // Update Footer
+  const footerTrainerName = document.getElementById("footerTrainerName");
+  if (footerTrainerName) footerTrainerName.textContent = config.trainerName;
+
+  const footerTrainerPhone = document.getElementById("footerTrainerPhone");
+  if (footerTrainerPhone) footerTrainerPhone.textContent = config.trainerPhone;
+
+  const footerPhoneLink = document.getElementById("footerPhoneLink");
+  if (footerPhoneLink) footerPhoneLink.href = `tel:${config.trainerPhone.replace(/\s+/g, '')}`;
+
+  const footerWhatsappText = document.getElementById("footerWhatsappText");
+  if (footerWhatsappText) footerWhatsappText.textContent = config.trainerPhone;
+
+  // Update all WhatsApp links across the page
+  const cleanNumber = config.whatsappNumber.replace(/[^0-9]/g, '');
+  const waUrl = `https://wa.me/${cleanNumber}`;
+  const whatsappElements = document.querySelectorAll(".dynamic-whatsapp-link");
+  whatsappElements.forEach(el => {
+    el.href = waUrl;
+  });
+}
+
+// Helper: Read Students from localStorage
 function getStoredStudents() {
-  const data = localStorage.getItem(STORAGE_KEY);
+  const data = localStorage.getItem(STORAGE_KEY_STUDENTS);
   if (!data) {
-    // If first time loading, seed with default sample data
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_STUDENTS));
+    localStorage.setItem(STORAGE_KEY_STUDENTS, JSON.stringify(DEFAULT_SAMPLE_STUDENTS));
     return [...DEFAULT_SAMPLE_STUDENTS];
   }
   try {
@@ -1420,13 +1828,13 @@ function getStoredStudents() {
   }
 }
 
-// Helper: Save students to localStorage
+// Helper: Save Students to localStorage
 function saveStoredStudents(studentsList) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(studentsList));
+  localStorage.setItem(STORAGE_KEY_STUDENTS, JSON.stringify(studentsList));
   renderAdminDashboard();
 }
 
-// Helper: Format today's date YYYY-MM-DD
+// Helper: Date string YYYY-MM-DD
 function getTodayString() {
   const today = new Date();
   const yyyy = today.getFullYear();
@@ -1435,50 +1843,139 @@ function getTodayString() {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-// Select course helper for Course Card buttons
-function selectCourseOption(courseName) {
+// Select course helper: preselects dropdown and scrolls smoothly to registration
+window.selectAndScrollToCourse = function(courseName) {
   const selectElem = document.getElementById("course");
   if (selectElem) {
     selectElem.value = courseName;
   }
+  const registerSection = document.getElementById("register");
+  if (registerSection) {
+    registerSection.scrollIntoView({ behavior: "smooth" });
+  }
+  const nameInput = document.getElementById("studentName");
+  if (nameInput) {
+    nameInput.focus();
+  }
+};
+
+// ============================================================
+// MOBILE NAVIGATION TOGGLE
+// ============================================================
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", function() {
+    navLinks.classList.toggle("nav-open");
+  });
+
+  // Close mobile nav when clicking any link
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("nav-open");
+    });
+  });
 }
 
 // ============================================================
-// REGISTRATION FORM SUBMISSION
+// REGISTRATION FORM WITH VALIDATION
 // ============================================================
 const registrationForm = document.getElementById("registrationForm");
 const successMessage = document.getElementById("message");
 
+const nameInput = document.getElementById("studentName");
+const mobileInput = document.getElementById("mobile");
+const emailInput = document.getElementById("email");
+const courseInput = document.getElementById("course");
+
+const errName = document.getElementById("errName");
+const errMobile = document.getElementById("errMobile");
+const errEmail = document.getElementById("errEmail");
+
+function validateForm() {
+  let isValid = true;
+
+  // Name validation: at least 2 characters
+  const nameVal = nameInput.value.trim();
+  if (nameVal.length < 2) {
+    errName.style.display = "block";
+    nameInput.style.borderColor = "#ef4444";
+    isValid = false;
+  } else {
+    errName.style.display = "none";
+    nameInput.style.borderColor = "#86efac";
+  }
+
+  // Mobile validation: 10 numeric digits
+  const mobileVal = mobileInput.value.trim();
+  const mobileRegex = /^[0-9]{10}$/;
+  if (!mobileRegex.test(mobileVal)) {
+    errMobile.style.display = "block";
+    mobileInput.style.borderColor = "#ef4444";
+    isValid = false;
+  } else {
+    errMobile.style.display = "none";
+    mobileInput.style.borderColor = "#86efac";
+  }
+
+  // Email validation: optional, but if provided, must look like an email
+  const emailVal = emailInput.value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (emailVal.length > 0 && !emailRegex.test(emailVal)) {
+    errEmail.style.display = "block";
+    emailInput.style.borderColor = "#ef4444";
+    isValid = false;
+  } else {
+    errEmail.style.display = "none";
+    emailInput.style.borderColor = emailVal.length > 0 ? "#86efac" : "#cbd5e1";
+  }
+
+  return isValid;
+}
+
+// Clear validation colors on input
+[nameInput, mobileInput, emailInput].forEach(inp => {
+  if (inp) {
+    inp.addEventListener("input", () => {
+      inp.style.borderColor = "#cbd5e1";
+      const err = document.getElementById("err" + inp.id.charAt(0).toUpperCase() + inp.id.slice(1));
+      if (err) err.style.display = "none";
+    });
+  }
+});
+
 registrationForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  const name = document.getElementById("studentName").value.trim();
-  const mobile = document.getElementById("mobile").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const course = document.getElementById("course").value;
-
-  const currentStudents = getStoredStudents();
+  if (!validateForm()) {
+    return;
+  }
 
   const newStudent = {
     id: Date.now(),
-    name: name,
-    mobile: mobile,
-    email: email || "N/A",
-    course: course,
+    name: nameInput.value.trim(),
+    mobile: mobileInput.value.trim(),
+    email: emailInput.value.trim() || "N/A",
+    course: courseInput.value,
     date: getTodayString()
   };
 
+  const currentStudents = getStoredStudents();
   currentStudents.push(newStudent);
   saveStoredStudents(currentStudents);
 
-  // Requirement 5: After submitting, show "Demo Registration Successful!"
+  // Exact required message
   successMessage.textContent = "Demo Registration Successful!";
   successMessage.style.display = "block";
 
-  // Reset input fields
   registrationForm.reset();
 
-  // Hide success message after 5 seconds
+  // Reset border colors
+  [nameInput, mobileInput, emailInput].forEach(inp => {
+    if (inp) inp.style.borderColor = "#cbd5e1";
+  });
+
   setTimeout(() => {
     successMessage.style.display = "none";
   }, 5000);
@@ -1486,30 +1983,41 @@ registrationForm.addEventListener("submit", function(event) {
 
 // Auto-fill demo data button helper
 document.getElementById("autoFillBtn").addEventListener("click", function() {
-  const sampleNames = ["Ravi Teja", "Bhavani Shankar", "Divya Sai", "Manohar Prasad"];
+  const sampleNames = ["Ravi Teja", "Bhavani Shankar", "Divya Sai", "Manohar Prasad", "Kavya Sri"];
   const randomName = sampleNames[Math.floor(Math.random() * sampleNames.length)];
   const randomMobile = "9" + Math.floor(100000000 + Math.random() * 900000000);
 
-  document.getElementById("studentName").value = randomName;
-  document.getElementById("mobile").value = randomMobile;
-  document.getElementById("email").value = randomName.toLowerCase().replace(" ", "") + "@demo.com";
+  nameInput.value = randomName;
+  mobileInput.value = randomMobile;
+  emailInput.value = randomName.toLowerCase().replace(/\s+/g, "") + "@demo.com";
+
+  validateForm();
 });
 
 // ============================================================
-// ADMIN DASHBOARD RENDERING & SEARCH
+// ADMIN DASHBOARD RENDERING & CONTROLS
 // ============================================================
 const searchInput = document.getElementById("searchInput");
 const studentTableBody = document.getElementById("studentTableBody");
 const noRecordsNotice = document.getElementById("noRecordsNotice");
 const totalCountElem = document.getElementById("totalCount");
 const todayCountElem = document.getElementById("todayCount");
-const courseBreakdownBadges = document.getElementById("courseBreakdownBadges");
+const courseBarsList = document.getElementById("courseBarsList");
+const statsTopCourse = document.getElementById("statsTopCourse");
+
+const ALL_COURSES = [
+  "AI Tools and ChatGPT",
+  "Prompt Writing",
+  "Canva Design",
+  "Digital Marketing",
+  "AI Video Creation"
+];
 
 function renderAdminDashboard() {
   const allStudents = getStoredStudents();
   const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
 
-  // Filter students based on query
+  // Filter students based on search query
   const filtered = allStudents.filter(s => {
     return (
       s.name.toLowerCase().includes(query) ||
@@ -1519,39 +2027,56 @@ function renderAdminDashboard() {
     );
   });
 
-  // Update Metric Counters
+  // Metrics
   totalCountElem.textContent = allStudents.length;
 
   const todayStr = getTodayString();
   const todayCount = allStudents.filter(s => s.date === todayStr).length;
   todayCountElem.textContent = todayCount;
 
-  // Course Breakdown computation
+  // Course Statistics Calculation
   const courseCounts = {};
+  ALL_COURSES.forEach(c => courseCounts[c] = 0);
   allStudents.forEach(s => {
     courseCounts[s.course] = (courseCounts[s.course] || 0) + 1;
   });
 
-  courseBreakdownBadges.innerHTML = "";
-  const allCourses = [
-    "AI Tools and ChatGPT",
-    "Prompt Writing",
-    "Canva Design",
-    "Digital Marketing",
-    "AI Video Creation"
-  ];
-
-  allCourses.forEach(cName => {
-    const count = courseCounts[cName] || 0;
-    const badge = document.createElement("span");
-    badge.className = "trainer-stat-pill";
-    badge.style.fontSize = "12px";
-    badge.style.padding = "4px 10px";
-    badge.innerHTML = `<strong>${cName}:</strong> ${count}`;
-    courseBreakdownBadges.appendChild(badge);
+  // Find top course
+  let topCourse = "N/A";
+  let maxCount = -1;
+  ALL_COURSES.forEach(c => {
+    if (courseCounts[c] > maxCount) {
+      maxCount = courseCounts[c];
+      topCourse = c;
+    }
   });
+  if (statsTopCourse) {
+    statsTopCourse.textContent = allStudents.length > 0 ? `Top: ${topCourse} (${maxCount})` : "Top: None";
+  }
 
-  // Render Table Rows
+  // Render Statistics Bars
+  if (courseBarsList) {
+    courseBarsList.innerHTML = "";
+    ALL_COURSES.forEach(courseName => {
+      const count = courseCounts[courseName] || 0;
+      const percentage = allStudents.length > 0 ? Math.round((count / allStudents.length) * 100) : 0;
+
+      const barItem = document.createElement("div");
+      barItem.className = "course-stat-bar-item";
+      barItem.innerHTML = `
+        <div class="course-stat-bar-labels">
+          <span>${courseName}</span>
+          <span><strong>${count}</strong> enrolled (${percentage}%)</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" style="width: ${percentage}%;"></div>
+        </div>
+      `;
+      courseBarsList.appendChild(barItem);
+    });
+  }
+
+  // Render Table
   studentTableBody.innerHTML = "";
 
   if (filtered.length === 0) {
@@ -1581,29 +2106,120 @@ function renderAdminDashboard() {
 
 // Delete single student
 window.deleteStudent = function(studentId) {
-  const currentStudents = getStoredStudents();
-  const updated = currentStudents.filter(s => s.id !== studentId);
-  saveStoredStudents(updated);
+  if (confirm("Are you sure you want to delete this student record?")) {
+    const currentStudents = getStoredStudents();
+    const updated = currentStudents.filter(s => s.id !== studentId);
+    saveStoredStudents(updated);
+  }
 };
 
-// Search filter listener
-searchInput.addEventListener("input", function() {
-  renderAdminDashboard();
-});
+// Search event listener
+if (searchInput) {
+  searchInput.addEventListener("input", function() {
+    renderAdminDashboard();
+  });
+}
 
 // Clear all demo data
 document.getElementById("clearDataBtn").addEventListener("click", function() {
   if (confirm("Are you sure you want to clear all demo registrations from localStorage?")) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+    localStorage.setItem(STORAGE_KEY_STUDENTS, JSON.stringify([]));
     renderAdminDashboard();
   }
 });
 
 // Restore sample demo data
 document.getElementById("loadSampleDataBtn").addEventListener("click", function() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_STUDENTS));
+  localStorage.setItem(STORAGE_KEY_STUDENTS, JSON.stringify(DEFAULT_SAMPLE_STUDENTS));
   renderAdminDashboard();
   alert("Default sample student records have been restored!");
+});
+
+// Export CSV Feature
+document.getElementById("exportCsvBtn").addEventListener("click", function() {
+  const students = getStoredStudents();
+  if (students.length === 0) {
+    alert("No student records available to export.");
+    return;
+  }
+
+  let csvContent = "data:text/csv;charset=utf-8,ID,Student Name,Mobile Number,Email,Course,Registered Date\n";
+  students.forEach(s => {
+    const row = [
+      s.id,
+      `"${s.name.replace(/"/g, '""')}"`,
+      `"${s.mobile}"`,
+      `"${s.email}"`,
+      `"${s.course}"`,
+      `"${s.date || ''}"`
+    ].join(",");
+    csvContent += row + "\n";
+  });
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", `ai_academy_students_${getTodayString()}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+
+// ============================================================
+// EDIT TRAINER DETAILS MODAL LOGIC
+// ============================================================
+const editTrainerModal = document.getElementById("editTrainerModal");
+const openEditTrainerBtn = document.getElementById("openEditTrainerBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const cancelEditModalBtn = document.getElementById("cancelEditModalBtn");
+const trainerEditForm = document.getElementById("trainerEditForm");
+
+const editName = document.getElementById("editName");
+const editTitle = document.getElementById("editTitle");
+const editPhone = document.getElementById("editPhone");
+const editWhatsapp = document.getElementById("editWhatsapp");
+const editBio = document.getElementById("editBio");
+
+if (openEditTrainerBtn) {
+  openEditTrainerBtn.addEventListener("click", function() {
+    const config = getSiteConfig();
+    editName.value = config.trainerName;
+    editTitle.value = config.trainerTitle;
+    editPhone.value = config.trainerPhone;
+    editWhatsapp.value = config.whatsappNumber;
+    editBio.value = config.trainerBio;
+    editTrainerModal.style.display = "flex";
+  });
+}
+
+function closeTrainerModal() {
+  if (editTrainerModal) editTrainerModal.style.display = "none";
+}
+
+if (closeModalBtn) closeModalBtn.addEventListener("click", closeTrainerModal);
+if (cancelEditModalBtn) cancelEditModalBtn.addEventListener("click", closeTrainerModal);
+
+if (trainerEditForm) {
+  trainerEditForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const updatedConfig = {
+      trainerName: editName.value.trim(),
+      trainerTitle: editTitle.value.trim(),
+      trainerPhone: editPhone.value.trim(),
+      whatsappNumber: editWhatsapp.value.trim(),
+      trainerBio: editBio.value.trim()
+    };
+    saveSiteConfig(updatedConfig);
+    closeTrainerModal();
+    alert("Trainer and contact details updated successfully!");
+  });
+}
+
+// Close modal if user clicks outside of modal content
+window.addEventListener("click", function(event) {
+  if (event.target === editTrainerModal) {
+    closeTrainerModal();
+  }
 });
 
 // Escape HTML utility to prevent XSS
@@ -1619,6 +2235,7 @@ function escapeHtml(text) {
 
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", function() {
+  applySiteConfig();
   renderAdminDashboard();
 });
 </script>
