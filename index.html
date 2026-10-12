@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digital Skills Academy - Demo Project</title>
+
+<style>
+/* ============================================================
+   ROOT THEME & COLOR PALETTE (White, Light Purple, Blue)
+   ============================================================ */
+:root {
+  --primary-purple: #6d28d9;
+  --secondary-purple: #8b5cf6;
+  --light-purple: #f5f3ff;
+  --purple-subtle: #ede9fe;
+  --purple-border: #ddd6fe;
+
+  --primary-blue: #2563eb;
+  --secondary-blue: #3b82f6;
+  --light-blue: #eff6ff;
+  --blue-subtle: #dbeafe;
+  --blue-border: #bfdbfe;
+
+  --accent-pink: #ec4899;
+  --accent-whatsapp: #25D366;
+  --accent-whatsapp-hover: #1eb956;
+
+  --text-dark: #1e1b4b;
+  --text-muted: #4b5563;
+  --text-light: #ffffff;
+
+  --bg-page: #f8fafc;
+  --card-bg: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(109, 40, 217, 0.06);
+  --shadow-md: 0 6px 20px rgba(109, 40, 217, 0.08);
+  --shadow-lg: 0 12px 30px rgba(37, 99, 235, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Nirmala UI", sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   TOP NOTICE / HEADER
+   ============================================================ */
+.demo-top-bar {
+  background: linear-gradient(90deg, #4338ca, #6d28d9, #2563eb);
+  color: #ffffff;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.demo-top-bar span {
+  background: rgba(255, 255, 255, 0.22);
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-right: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+header {
+  background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%);
+  color: white;
+  padding: 26px 20px 22px;
+  text-align: center;
+  border-bottom: 3px solid var(--secondary-purple);
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header p {
+  color: #c7d2fe;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav {
+  background: #ffffff;
+  padding: 12px 16px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--purple-border);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+nav a {
+  color: var(--primary-purple);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+nav a:hover {
+  background: var(--purple-subtle);
+  color: #4338ca;
+  transform: translateY(-1px);
+}
+
+nav a.nav-highlight {
+  background: var(--light-blue);
+  color: var(--primary-blue);
+  border: 1px solid var(--blue-border);
+}
+
+nav a.nav-highlight:hover {
+  background: var(--blue-subtle);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 20px 65px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero h1 {
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  line-height: 1.25;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto 26px;
+  color: #e0e7ff;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+  color: white;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--primary-purple);
+}
+
+.whatsapp-btn {
+  background: var(--accent-whatsapp);
+  color: white;
+  text-decoration: none;
+}
+
+.whatsapp-btn:hover {
+  background: var(--accent-whatsapp-hover);
+  color: white;
+}
+
+.btn-small {
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--primary-purple);
+  color: var(--primary-purple);
+}
+
+.btn-outline:hover {
+  background: var(--purple-subtle);
+}
+
+/* ============================================================
+   COMMON SECTION STYLING
+   ============================================================ */
+section {
+  padding: 55px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-header h2 {
+  font-size: 30px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  display: inline-block;
+  position: relative;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.badge-tag {
+  display: inline-block;
+  background: var(--purple-subtle);
+  color: var(--primary-purple);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   COURSES CARDS (5 Specified Courses)
+   ============================================================ */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.course-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  border: 1px solid var(--purple-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.course-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--secondary-blue), var(--secondary-purple));
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--secondary-purple);
+}
+
+.course-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--purple-subtle);
+  color: var(--primary-purple);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.course-card h3 {
+  font-size: 20px;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.course-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.course-card .features {
+  list-style: none;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.course-card .features li {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.course-card .features li::before {
+  content: "✔";
+  color: var(--primary-purple);
+  font-weight: bold;
+}
+
+.course-action {
+  margin-top: auto;
+}
+
+.course-action a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background: var(--light-purple);
+  color: var(--primary-purple);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--purple-border);
+}
+
+.course-action a:hover {
+  background: var(--primary-purple);
+  color: white;
+}
+
+/* ============================================================
+   ABOUT TRAINER SECTION
+   ============================================================ */
+.trainer-section {
+  background: linear-gradient(135deg, #ffffff 0%, var(--light-purple) 50%, var(--light-blue) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--purple-border);
+  box-shadow: var(--shadow-md);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 40px;
+}
+
+.trainer-card {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.trainer-avatar-box {
+  flex: 0 0 160px;
+  text-align: center;
+}
+
+.trainer-avatar {
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  margin: 0 auto 12px;
+  box-shadow: 0 8px 24px rgba(109, 40, 217, 0.25);
+  border: 4px solid #ffffff;
+}
+
+.trainer-role-badge {
+  background: #ffffff;
+  color: var(--primary-purple);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--purple-border);
+  display: inline-block;
+}
+
+.trainer-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.trainer-content h3 {
+  font-size: 28px;
+  color: #1e1b4b;
+  margin-bottom: 6px;
+}
+
+.trainer-subtitle {
+  color: var(--primary-blue);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.trainer-bio {
+  color: #374151;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.trainer-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.trainer-stat-pill {
+  background: #ffffff;
+  border: 1px solid var(--blue-border);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trainer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   LEARNING GUIDE SECTION
+   ============================================================ */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.guide-step-card {
+  background: white;
+  padding: 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--blue-border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.guide-step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.guide-step-num {
+  width: 32px;
+  height: 32px;
+  background: var(--blue-subtle);
+  color: var(--primary-blue);
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.guide-step-card h4 {
+  font-size: 16px;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.guide-step-card p {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   DEMO REGISTRATION FORM
+   ============================================================ */
+.form-card {
+  background: white;
+  padding: 34px 28px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--purple-border);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.demo-disclaimer {
+  background: var(--light-blue);
+  border-left: 4px solid var(--primary-blue);
+  padding: 12px 16px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 24px;
+  font-size: 13.5px;
+  color: #1e3a8a;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 7px;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.form-group label span.req {
+  color: #ef4444;
+}
+
+.form-group input, 
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14.5px;
+  color: #1e293b;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.15);
+}
+
+.form-buttons-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.form-buttons-row button {
+  flex: 1;
+  min-width: 170px;
+}
+
+.success-banner {
+  background: #dcfce7;
+  border: 1.5px solid #86efac;
+  color: #14532d;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 18px;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   DEMO ADMIN DASHBOARD
+   ============================================================ */
+.admin-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--purple-border);
+  padding: 30px;
+}
+
+.admin-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
+}
+
+.admin-title-area h3 {
+  font-size: 22px;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-status-pill {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Admin Metric Stat Boxes */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.stat-box {
+  background: var(--light-purple);
+  border: 1px solid var(--purple-border);
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-box.stat-blue {
+  background: var(--light-blue);
+  border-color: var(--blue-border);
+}
+
+.stat-box .num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary-purple);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.stat-box.stat-blue .num {
+  color: var(--primary-blue);
+}
+
+.stat-box .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Admin Controls Toolbar */
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.search-box-wrapper {
+  flex: 1;
+  min-width: 240px;
+  position: relative;
+}
+
+.search-box-wrapper input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-box-wrapper input:focus {
+  border-color: var(--primary-blue);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.admin-actions-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Admin Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+table.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+  min-width: 600px;
+}
+
+table.admin-table th {
+  background: #f1f5f9;
+  color: var(--text-dark);
+  padding: 12px 14px;
+  font-weight: 700;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+table.admin-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: middle;
+}
+
+table.admin-table tr:hover td {
+  background: #f8fafc;
+}
+
+.course-tag {
+  display: inline-block;
+  background: var(--purple-subtle);
+  color: var(--primary-purple);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 35px 20px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ============================================================
+   FOOTER (Required format + Trainer details + WhatsApp)
+   ============================================================ */
+footer {
+  background: #171344;
+  color: white;
+  padding: 40px 20px 30px;
+  border-top: 4px solid var(--secondary-purple);
+  margin-top: 50px;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.footer-container h3 {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.footer-trainer {
+  font-size: 16px;
+  color: #c7d2fe;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.footer-contact {
+  font-size: 15px;
+  color: #e0e7ff;
+  margin-bottom: 16px;
+}
+
+.footer-contact a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.footer-whatsapp {
+  margin: 10px 0 20px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 18px;
+  margin-top: 15px;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN (Mobile & Tablet)
+   ============================================================ */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 22px;
+  }
+
+  .hero {
+    padding: 45px 16px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .trainer-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .trainer-stats, .trainer-contact-row {
+    justify-content: center;
+  }
+
+  .admin-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-actions-group {
+    justify-content: stretch;
+  }
+
+  .admin-actions-group button {
+    flex: 1;
+  }
+
+  .form-buttons-row {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- DEMO PROJECT TOP BANNER -->
+<div class="demo-top-bar">
+  <span>DEMO PROJECT</span> HTML, CSS & JavaScript Homework Demonstration • AI Digital Skills Academy
+</div>
+
+<!-- HEADER -->
+<header>
+  <h1>🎓 AI DIGITAL SKILLS ACADEMY</h1>
+  <p>Learn • Practice • Create • Grow</p>
+</header>
+
+<!-- NAVIGATION BAR -->
+<nav>
+  <div class="nav-container">
+    <a href="#home">🏠 Home</a>
+    <a href="#courses">📚 Courses</a>
+    <a href="#trainer">👨‍🏫 About Trainer</a>
+    <a href="#guide">📖 Learning Guide</a>
+    <a href="#register" class="nav-highlight">📝 Demo Registration</a>
+    <a href="#admin" class="nav-highlight">🔐 Demo Admin</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero" id="home">
+  <div class="hero-badge">✨ Student Practical Skills Training</div>
+  <h1>Welcome to AI & Digital Marketing</h1>
+  <p>AI Tools, Canva Design, Digital Marketing & Video Creation నేర్చుకోండి.</p>
+  
+  <div class="hero-buttons">
+    <a href="#register" class="btn btn-primary">
+      ✍️ Demo Registration
+    </a>
+    <a class="btn whatsapp-btn"
+       href="https://wa.me/919398683617"
+       target="_blank"
+       rel="noopener noreferrer">
+       💬 Contact on WhatsApp
+    </a>
+    <a href="#admin" class="btn btn-secondary">
+      📊 View Demo Admin
+    </a>
+  </div>
+</div>
+
+<!-- 1. COURSES SECTION (5 Specified Courses) -->
+<section id="courses">
+  <div class="section-header">
+    <span class="badge-tag">Curriculum</span>
+    <h2>📚 Course Details</h2>
+    <p>Essential hands-on digital skills designed for students, freelancers and beginners.</p>
+  </div>
+
+  <div class="courses-grid">
+    <!-- Course 1 -->
+    <div class="course-card">
+      <div class="course-icon">🤖</div>
+      <h3>AI Tools and ChatGPT</h3>
+      <p>AI టూల్స్ ఉపయోగించడం, ChatGPT ప్రాంప్ట్లు రాయడం మరియు రోజువారీ పనులను వేగవంతం చేయడం నేర్చుకోండి.</p>
+      <ul class="features">
+        <li>ChatGPT & Claude Fundamentals</li>
+        <li>AI for Everyday Productivity</li>
+        <li>Content & Problem Solving</li>
+      </ul>
+      <div class="course-action">
+        <a href="#register" onclick="selectCourseOption('AI Tools and ChatGPT')">Register for Demo →</a>
+      </div>
+    </div>
+
+    <!-- Course 2 -->
+    <div class="course-card">
+      <div class="course-icon">✍️</div>
+      <h3>Prompt Writing</h3>
+      <p>ఖచ్చితమైన, నాణ్యమైన అవుట్‌పుట్ పొందడానికి ప్రొఫెషనల్ ప్రాంప్ట్ ఇంజనీరింగ్ పద్ధతులు నేర్చుకోండి.</p>
+      <ul class="features">
+        <li>Structured Prompt Frameworks</li>
+        <li>Role-based & Multi-turn Prompts</li>
+        <li>Creative Writing & Idea Generation</li>
+      </ul>
+      <div class="course-action">
+        <a href="#register" onclick="selectCourseOption('Prompt Writing')">Register for Demo →</a>
+      </div>
+    </div>
+
+    <!-- Course 3 -->
+    <div class="course-card">
+      <div class="course-icon">🎨</div>
+      <h3>Canva Design</h3>
+      <p>సోషల్ మీడియా పోస్టర్లు, యూట్యూబ్ థంబ్‌నెయిల్స్, ఫ్లయర్లు మరియు ప్రొఫెషనల్ గ్రాఫిక్స్ తయారు చేయండి.</p>
+      <ul class="features">
+        <li>Social Media Posters & Banners</li>
+        <li>Color Theory & Typography</li>
+        <li>Canva AI Magic Tools</li>
+      </ul>
+      <div class="course-action">
+        <a href="#register" onclick="selectCourseOption('Canva Design')">Register for Demo →</a>
+      </div>
+    </div>
+
+    <!-- Course 4 -->
+    <div class="course-card">
+      <div class="course-icon">📱</div>
+      <h3>Digital Marketing</h3>
+      <p>సోషల్ మీడియా ప్రమోషన్, ఆన్‌లైన్ మార్కెటింగ్ వ్యూహాలు మరియు కంటెంట్ ఐడియాలు తెలుసుకోండి.</p>
+      <ul class="features">
+        <li>Instagram & YouTube Strategy</li>
+        <li>Audience Growth & Lead Gen</li>
+        <li>Brand Building Basics</li>
+      </ul>
+      <div class="course-action">
+        <a href="#register" onclick="selectCourseOption('Digital Marketing')">Register for Demo →</a>
+      </div>
+    </div>
+
+    <!-- Course 5 -->
+    <div class="course-card">
+      <div class="course-icon">🎬</div>
+      <h3>AI Video Creation</h3>
+      <p>AI వీడియోలు, అవతార్లు, వాయిస్ ఓవర్లు మరియు షార్ట్స్/రీల్స్ సులభంగా తయారు చేయడం ప్రాక్టీస్ చేయండి.</p>
+      <ul class="features">
+        <li>AI Script & Voice Generation</li>
+        <li>Talking Avatars & Video Tools</li>
+        <li>Reels & Shorts Production</li>
+      </ul>
+      <div class="course-action">
+        <a href="#register" onclick="selectCourseOption('AI Video Creation')">Register for Demo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ABOUT TRAINER SECTION -->
+<section id="trainer">
+  <div class="trainer-section">
+    <div class="trainer-card">
+      <div class="trainer-avatar-box">
+        <div class="trainer-avatar">👨‍🏫</div>
+        <span class="trainer-role-badge">Lead Instructor</span>
+      </div>
+
+      <div class="trainer-content">
+        <h3>Paila Ravi Sankar</h3>
+        <div class="trainer-subtitle">Trainer & Digital Skills Mentor</div>
+        <p class="trainer-bio">
+          నమస్కారం! I am <strong>Paila Ravi Sankar</strong>, dedicated to guiding beginners, students and creators in mastering modern AI technologies, Canva design, and digital marketing strategies. My classes focus on 100% practical practice, beginner-friendly explanations in Telugu & English, and empowering you with real-world digital productivity skills.
+        </p>
+
+        <div class="trainer-stats">
+          <div class="trainer-stat-pill">✨ Practical & Hands-on Learning</div>
+          <div class="trainer-stat-pill">🗣️ Telugu & English Friendly</div>
+          <div class="trainer-stat-pill">🎯 5 Practical Modules</div>
+        </div>
+
+        <div class="trainer-contact-row">
+          <a class="btn whatsapp-btn btn-small"
+             href="https://wa.me/919398683617"
+             target="_blank"
+             rel="noopener noreferrer">
+             💬 WhatsApp Trainer: +91 93986 83617
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. LEARNING GUIDE SECTION -->
+<section id="guide">
+  <div class="section-header">
+    <span class="badge-tag">Process</span>
+    <h2>📖 How to Learn the Course</h2>
+    <p>Follow these 5 simple steps for successful course completion and homework submission.</p>
+  </div>
+
+  <div class="guide-grid">
+    <div class="guide-step-card">
+      <div class="guide-step-num">1</div>
+      <h4>Step 1: Course Guidelines</h4>
+      <p>✅ అధికారిక కోర్స్ సూచనలు మరియు సిలబస్ వివరాలను క్షుణ్ణంగా తెలుసుకోండి.</p>
+    </div>
+
+    <div class="guide-step-card">
+      <div class="guide-step-num">2</div>
+      <h4>Step 2: Attend Sessions</h4>
+      <p>✅ రోజువారీ లైవ్/రికార్డెడ్ క్లాసులలో తప్పకుండా పాల్గొనండి మరియు నోట్స్ రాసుకోండి.</p>
+    </div>
+
+    <div class="guide-step-card">
+      <div class="guide-step-num">3</div>
+      <h4>Step 3: Hands-on Practice</h4>
+      <p>✅ క్లాస్ తర్వాత AI ప్రాంప్ట్లు, కాన్వా పోస్టర్లు మరియు వీడియో టూల్స్ ప్రాక్టీస్ చేయండి.</p>
+    </div>
+
+    <div class="guide-step-card">
+      <div class="guide-step-num">4</div>
+      <h4>Step 4: Save to Google Drive</h4>
+      <p>✅ మీరు చేసిన డిజైన్లు, ఫైల్స్ మరియు ప్రాజెక్ట్లను సురక్షితంగా Google Driveలో సేవ్ చేయండి.</p>
+    </div>
+
+    <div class="guide-step-card">
+      <div class="guide-step-num">5</div>
+      <h4>Step 5: Submit Homework</h4>
+      <p>✅ నిర్వాహకులు సూచించిన ఫార్మాట్లో ప్రాక్టీస్ లింక్స్ మరియు హోమ్‌వర్క్ సమర్పించండి.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. DEMO REGISTRATION FORM SECTION -->
+<section id="register">
+  <div class="section-header">
+    <span class="badge-tag">Demo Mode</span>
+    <h2>📝 Student Registration (DEMO)</h2>
+    <p>Fill out the form below to test the registration feature. Data is saved to your browser's localStorage.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="demo-disclaimer">
+      ℹ️ <strong>DEMO Form:</strong> This is a homework demonstration form. You do not need to provide real personal data; feel free to use test names.
+    </div>
+
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="studentName">Student Name <span class="req">*</span></label>
+        <input id="studentName" type="text"
+               placeholder="మీ పేరు / e.g., Rajesh Kumar" required>
+      </div>
+
+      <div class="form-group">
+        <label for="mobile">Mobile Number <span class="req">*</span></label>
+        <input id="mobile" type="tel"
+               pattern="[0-9]{10}" maxlength="10"
+               placeholder="10 అంకెల నంబర్ / e.g., 9876543210" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input id="email" type="email"
+               placeholder="మీ ఇమెయిల్ / e.g., student@demo.com">
+      </div>
+
+      <div class="form-group">
+        <label for="course">Interested Course <span class="req">*</span></label>
+        <select id="course" required>
+          <option value="AI Tools and ChatGPT">AI Tools and ChatGPT</option>
+          <option value="Prompt Writing">Prompt Writing</option>
+          <option value="Canva Design">Canva Design</option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="AI Video Creation">AI Video Creation</option>
+        </select>
+      </div>
+
+      <div class="form-buttons-row">
+        <button type="submit" class="btn btn-primary">
+          Submit Registration
+        </button>
+        <button type="button" class="btn btn-outline" id="autoFillBtn">
+          ⚡ Fill Demo Data
+        </button>
+      </div>
+
+      <div id="message" class="success-banner">
+        Demo Registration Successful!
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- 5. DEMO ADMIN DASHBOARD SECTION -->
+<section id="admin">
+  <div class="section-header">
+    <span class="badge-tag">Admin Panel</span>
+    <h2>🔐 Admin Dashboard (DEMO)</h2>
+    <p>Real-time view of student registrations saved in localStorage with search and data management.</p>
+  </div>
+
+  <div class="admin-card">
+    <div class="admin-header-row">
+      <div class="admin-title-area">
+        <h3>📊 Registered Students Overview</h3>
+        <span class="demo-status-pill">DEMO MODE • No Password Required</span>
+      </div>
+      <div>
+        <span style="font-size: 13px; color: var(--text-muted);">
+          💾 Storage: <strong>localStorage</strong> (persists on refresh)
+        </span>
+      </div>
+    </div>
+
+    <!-- Admin Metric Counters -->
+    <div class="admin-stats-grid">
+      <div class="stat-box">
+        <div class="num" id="totalCount">0</div>
+        <div class="label">Total Students</div>
+      </div>
+      <div class="stat-box stat-blue">
+        <div class="num" id="courseTypesCount">5</div>
+        <div class="label">Active Courses</div>
+      </div>
+      <div class="stat-box">
+        <div class="num" id="todayCount">0</div>
+        <div class="label">Today's Registrations</div>
+      </div>
+    </div>
+
+    <!-- Course Breakdown Badges -->
+    <div style="margin-bottom: 20px; font-size: 13px;">
+      <strong style="color: var(--text-dark);">Course Distribution:</strong>
+      <div id="courseBreakdownBadges" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- Admin Toolbar: Search & Action Buttons -->
+    <div class="admin-toolbar">
+      <div class="search-box-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search by student name, mobile, or course...">
+      </div>
+
+      <div class="admin-actions-group">
+        <button type="button" class="btn btn-outline btn-small" id="loadSampleDataBtn" title="Restore default sample records">
+          🔄 Restore Sample Data
+        </button>
+        <button type="button" class="btn btn-danger btn-small" id="clearDataBtn" title="Clear all records from localStorage">
+          🗑️ Clear Demo Data
+        </button>
+      </div>
+    </div>
+
+    <!-- Records Table -->
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 45px;">#</th>
+            <th>Student Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Selected Course</th>
+            <th>Registered Date</th>
+            <th style="text-align: center; width: 80px;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="studentTableBody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="noRecordsNotice" class="empty-state" style="display: none;">
+      No student records found matching your search.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <h3>AI Digital Skills Academy</h3>
+    <p class="footer-trainer">Trainer: Paila Ravi Sankar</p>
+    <p class="footer-contact">
+      Contact: <a href="tel:+919398683617">+91 93986 83617</a>
+    </p>
+
+    <div class="footer-whatsapp">
+      <a class="btn whatsapp-btn btn-small"
+         href="https://wa.me/919398683617"
+         target="_blank"
+         rel="noopener noreferrer">
+         💬 WhatsApp: +91 93986 83617
+      </a>
+    </div>
+
+    <div class="footer-copy">
+      <p>HTML, CSS & JavaScript Homework Demonstration Website • All rights reserved © 2026</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT LOGIC
+     - LocalStorage Persistence
+     - Default Sample Students
+     - Real-Time Search
+     - Clear & Restore Demo Data
+     ============================================================ -->
+<script>
+// LocalStorage key definition
+const STORAGE_KEY = "ai_academy_demo_students";
+
+// Pre-defined sample student records for homework presentation
+const DEFAULT_SAMPLE_STUDENTS = [
+  {
+    id: 1,
+    name: "Suresh Varma",
+    mobile: "9876543210",
+    email: "suresh.v@demo.com",
+    course: "AI Tools and ChatGPT",
+    date: "2026-10-10"
+  },
+  {
+    id: 2,
+    name: "Lakshmi Priya",
+    mobile: "9123456789",
+    email: "lakshmi.p@demo.com",
+    course: "Prompt Writing",
+    date: "2026-10-11"
+  },
+  {
+    id: 3,
+    name: "Kalyan Babu",
+    mobile: "9988776655",
+    email: "kalyan.b@demo.com",
+    course: "Canva Design",
+    date: "2026-10-11"
+  },
+  {
+    id: 4,
+    name: "Anusha Reddy",
+    mobile: "9848022338",
+    email: "anusha.r@demo.com",
+    course: "Digital Marketing",
+    date: "2026-10-12"
+  },
+  {
+    id: 5,
+    name: "Venkata Rao",
+    mobile: "9700112233",
+    email: "venkat.rao@demo.com",
+    course: "AI Video Creation",
+    date: "2026-10-12"
+  }
+];
+
+// Helper: Read students from localStorage
+function getStoredStudents() {
+  const data = localStorage.getItem(STORAGE_KEY);
+  if (!data) {
+    // If first time loading, seed with default sample data
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_STUDENTS));
+    return [...DEFAULT_SAMPLE_STUDENTS];
+  }
+  try {
+    return JSON.parse(data);
+  } catch (err) {
+    console.error("Error reading from localStorage:", err);
+    return [];
+  }
+}
+
+// Helper: Save students to localStorage
+function saveStoredStudents(studentsList) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(studentsList));
+  renderAdminDashboard();
+}
+
+// Helper: Format today's date YYYY-MM-DD
+function getTodayString() {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+// Select course helper for Course Card buttons
+function selectCourseOption(courseName) {
+  const selectElem = document.getElementById("course");
+  if (selectElem) {
+    selectElem.value = courseName;
+  }
+}
+
+// ============================================================
+// REGISTRATION FORM SUBMISSION
+// ============================================================
+const registrationForm = document.getElementById("registrationForm");
+const successMessage = document.getElementById("message");
+
+registrationForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("studentName").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const course = document.getElementById("course").value;
+
+  const currentStudents = getStoredStudents();
+
+  const newStudent = {
+    id: Date.now(),
+    name: name,
+    mobile: mobile,
+    email: email || "N/A",
+    course: course,
+    date: getTodayString()
+  };
+
+  currentStudents.push(newStudent);
+  saveStoredStudents(currentStudents);
+
+  // Requirement 5: After submitting, show "Demo Registration Successful!"
+  successMessage.textContent = "Demo Registration Successful!";
+  successMessage.style.display = "block";
+
+  // Reset input fields
+  registrationForm.reset();
+
+  // Hide success message after 5 seconds
+  setTimeout(() => {
+    successMessage.style.display = "none";
+  }, 5000);
+});
+
+// Auto-fill demo data button helper
+document.getElementById("autoFillBtn").addEventListener("click", function() {
+  const sampleNames = ["Ravi Teja", "Bhavani Shankar", "Divya Sai", "Manohar Prasad"];
+  const randomName = sampleNames[Math.floor(Math.random() * sampleNames.length)];
+  const randomMobile = "9" + Math.floor(100000000 + Math.random() * 900000000);
+
+  document.getElementById("studentName").value = randomName;
+  document.getElementById("mobile").value = randomMobile;
+  document.getElementById("email").value = randomName.toLowerCase().replace(" ", "") + "@demo.com";
+});
+
+// ============================================================
+// ADMIN DASHBOARD RENDERING & SEARCH
+// ============================================================
+const searchInput = document.getElementById("searchInput");
+const studentTableBody = document.getElementById("studentTableBody");
+const noRecordsNotice = document.getElementById("noRecordsNotice");
+const totalCountElem = document.getElementById("totalCount");
+const todayCountElem = document.getElementById("todayCount");
+const courseBreakdownBadges = document.getElementById("courseBreakdownBadges");
+
+function renderAdminDashboard() {
+  const allStudents = getStoredStudents();
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+  // Filter students based on query
+  const filtered = allStudents.filter(s => {
+    return (
+      s.name.toLowerCase().includes(query) ||
+      s.mobile.includes(query) ||
+      (s.email && s.email.toLowerCase().includes(query)) ||
+      s.course.toLowerCase().includes(query)
+    );
+  });
+
+  // Update Metric Counters
+  totalCountElem.textContent = allStudents.length;
+
+  const todayStr = getTodayString();
+  const todayCount = allStudents.filter(s => s.date === todayStr).length;
+  todayCountElem.textContent = todayCount;
+
+  // Course Breakdown computation
+  const courseCounts = {};
+  allStudents.forEach(s => {
+    courseCounts[s.course] = (courseCounts[s.course] || 0) + 1;
+  });
+
+  courseBreakdownBadges.innerHTML = "";
+  const allCourses = [
+    "AI Tools and ChatGPT",
+    "Prompt Writing",
+    "Canva Design",
+    "Digital Marketing",
+    "AI Video Creation"
+  ];
+
+  allCourses.forEach(cName => {
+    const count = courseCounts[cName] || 0;
+    const badge = document.createElement("span");
+    badge.className = "trainer-stat-pill";
+    badge.style.fontSize = "12px";
+    badge.style.padding = "4px 10px";
+    badge.innerHTML = `<strong>${cName}:</strong> ${count}`;
+    courseBreakdownBadges.appendChild(badge);
+  });
+
+  // Render Table Rows
+  studentTableBody.innerHTML = "";
+
+  if (filtered.length === 0) {
+    noRecordsNotice.style.display = "block";
+  } else {
+    noRecordsNotice.style.display = "none";
+    filtered.forEach((student, index) => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td style="font-weight: bold; color: #64748b;">${index + 1}</td>
+        <td><strong>${escapeHtml(student.name)}</strong></td>
+        <td>${escapeHtml(student.mobile)}</td>
+        <td style="color: #64748b;">${escapeHtml(student.email)}</td>
+        <td><span class="course-tag">${escapeHtml(student.course)}</span></td>
+        <td style="font-size: 12.5px; color: #64748b;">${student.date || "2026-10-12"}</td>
+        <td style="text-align: center;">
+          <button type="button" class="btn btn-danger btn-small" style="padding: 3px 8px; font-size: 11px;" onclick="deleteStudent(${student.id})" title="Delete record">
+            ✕ Delete
+          </button>
+        </td>
+      `;
+      studentTableBody.appendChild(row);
+    });
+  }
+}
+
+// Delete single student
+window.deleteStudent = function(studentId) {
+  const currentStudents = getStoredStudents();
+  const updated = currentStudents.filter(s => s.id !== studentId);
+  saveStoredStudents(updated);
+};
+
+// Search filter listener
+searchInput.addEventListener("input", function() {
+  renderAdminDashboard();
+});
+
+// Clear all demo data
+document.getElementById("clearDataBtn").addEventListener("click", function() {
+  if (confirm("Are you sure you want to clear all demo registrations from localStorage?")) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+    renderAdminDashboard();
+  }
+});
+
+// Restore sample demo data
+document.getElementById("loadSampleDataBtn").addEventListener("click", function() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_STUDENTS));
+  renderAdminDashboard();
+  alert("Default sample student records have been restored!");
+});
+
+// Escape HTML utility to prevent XSS
+function escapeHtml(text) {
+  if (!text) return "";
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", function() {
+  renderAdminDashboard();
+});
+</script>
+
+</body>
+</html>
